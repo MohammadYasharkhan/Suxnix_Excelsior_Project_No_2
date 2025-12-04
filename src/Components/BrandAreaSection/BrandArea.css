@@ -1,0 +1,74 @@
+.brand_area_section
+{
+    width: 100%;
+    height: 353.6px;
+    padding: 110px 0px 120px 0px;
+    box-sizing: border-box;
+}
+
+.brand_container
+{
+    position: relative;
+    overflow: hidden;
+}
+
+.brand_heading
+{
+    height: 75.6px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.brand_heading .title
+{
+    font-size: 15px;
+    padding: 0 80px;
+    display: inline-flex;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--tg-heading-font-color);
+    letter-spacing: .095em;
+    box-sizing: border-box;
+}
+
+
+.brand_heading .title::before
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--tg-primary-color);
+}
+
+.brand_heading .title::after
+{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 11px;
+    width: 50px;
+    height: 2px;
+    background-color: var(--tg-primary-color);
+}
+
+.slider_track
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.slider_track_img_container
+{
+    width: 180px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

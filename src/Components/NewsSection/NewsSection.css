@@ -1,0 +1,306 @@
+#news_section
+{
+    padding: 120px 0px;
+}
+
+.news_section_container
+{
+    width: 1320px;
+    height: 660.6px;
+    box-sizing: border-box;
+    /* padding: 0px 15px; */
+    margin: 0px auto;
+    display: flex;
+}
+
+
+
+.news_container_wrapper
+{
+    margin: 0px 110px 0px 0px;
+}
+
+.news_section_heading
+{
+    margin-bottom: 50px;
+}
+
+
+.news_section_heading .sub_title
+{
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: .095em;
+    text-transform: uppercase;
+    color: var(--tg-primary-color);
+    margin-bottom: 15px;
+}
+
+.news_section_heading .title 
+{
+    font-size: 50px;
+    letter-spacing: -.025em;
+}
+
+
+
+.blog_post_item
+{
+    display: flex;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #F4F4F4;
+}
+
+
+.blog_post_thumb
+{
+    width: 150px;
+    height: 130px;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    margin: 0 30px 0 0;
+}
+
+
+.blog_post_content
+{    
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+
+
+.blog_post_content .content_top
+{
+    display: flex;
+    margin: 0px 0px 22px 0px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.content_top .tag a
+{
+    font-weight: 500;
+    color: #222222;
+}
+
+.content_top .date 
+{
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.content_top .date img 
+{
+    height: 16px;
+    width: auto;
+    margin-right: 5px;
+}
+
+
+.blog_post_content .title
+{
+    font-size: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin: 0;
+}
+
+
+.blog_post_content .content_bottom
+{
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.posted_by
+{
+    color: #222222;
+}
+
+.content_bottom  div
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+    /* font-size: 16px; */
+}
+
+.content_bottom img 
+{
+    height: 16px;
+    width: auto;
+    margin-right: 5px;
+}
+
+.content_bottom .comments
+{
+    margin-right: 30px;
+}
+
+
+
+.faq_wrapper
+{
+    margin-left: 130px;
+}
+
+
+.single_question{
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    transition: .3s linear;
+    padding: 30px;
+    position: relative;
+}
+
+
+.single_question.active-item
+{
+    background: var(--tg-white);
+    box-shadow: 0 10px 32px #0000000f;
+    border-bottom: none;
+    z-index: 1;
+    transition: .3s;
+}
+
+
+.single_question::after
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: #f4f4f4;
+}
+
+/* .single_question_header
+{
+
+} */
+
+.single_question_button
+{
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+    box-shadow: none;
+    color: #222222;
+    font-family: inherit;
+    width: 100%;
+    text-align: start;
+    align-items: center;
+
+    display: flex;
+    align-items: center;
+}
+
+
+.qa_arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    color: #222222;
+}
+
+.qa_arrow.arroweffect {
+    transform: rotate(-180deg);
+    color: var(--tg-primary-color);
+}
+
+
+.single_question_button .count
+{
+    color: var(--tg-primary-color);
+    margin-right: 7px;
+}
+
+
+.answer_of_question
+{
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: all .3s linear;
+}
+
+.answer_of_question.open 
+{
+    max-height: 500px; /* enough for your content */
+    opacity: 1;
+    padding-top: 20px;
+}
+
+.answer_of_question.closed
+{
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+}
+
+
+
+@media (max-width:1500px) {
+    .news_container_wrapper
+    {
+        margin: 0 30px 0 0;
+    }
+    .faq_wrapper
+    {
+        margin: 0 0 0 30px;
+    }
+}
+
+
+@media (max-width:992px) {
+    .faq_wrapper
+    {
+        margin: 0px;
+    }
+    .news_container_wrapper
+    {
+        margin: 0 0 100px;
+    }
+}
+
+
+@media (max-width:768px) {
+    .news_section_heading .title
+    {
+        font-size: 44px;
+    }
+}
+
+@media (min-width: 576px) and (max-width:768px) {
+    .blog_post_item
+    {
+        display: flex;
+    }
+}
+
+@media (max-width:768.89px) {
+    .blog_post_item
+    {
+        display: block;
+    }
+    .blog_post_thumb
+    {
+        margin: 0 0 15px 0;
+    }
+}

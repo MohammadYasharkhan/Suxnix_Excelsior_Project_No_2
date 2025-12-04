@@ -1,0 +1,160 @@
+#formula_section
+{
+    padding: 100px 0px;
+    background-image: url("./FormulaSectionImages/formula_bg.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#formula_section::before
+{
+    content: "";
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -15px;
+    background-image: url("./FormulaSectionImages/formula_shape01.png");
+    width: 100%;
+    height: 44px;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+#formula_section::after
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -17px;
+    background-image: url("./FormulaSectionImages/formula_shape02.png");
+    width: 100%;
+    height: 47px;
+    background-repeat: repeat;
+    background-position: center;
+}
+
+
+.formula_container
+{
+    height: 589.4px;
+    width: 1320px;
+    margin: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+}
+
+
+.formula_content
+{
+    width: 50%;
+    height: 100%;
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+
+
+.formula_image
+{
+    width: 50%;
+    height: 100%;
+    padding: 0px 15px;
+    box-sizing: border-box;
+}
+
+
+.formula_image_conatiner
+{
+    margin-right: -100px;
+    text-align: right;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.formula_heading_section
+{
+    margin-bottom: 50px;
+}
+
+.formula_heading_section .sub_title
+{
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: .095em;
+    text-transform: uppercase;
+    color: #FAA432;
+}
+
+.formula_heading_section .title
+{
+    font-size: 50px;
+    letter-spacing: -.025em;
+    margin-bottom: 0;
+    line-height: 1.2;
+    color: white;
+}
+
+
+.formula_list
+{
+    margin: 0px 0px 50px 0px;
+    padding: 0px;
+}
+
+.formula_list li
+{
+    list-style: none;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: .02em;
+    line-height: 1.5;
+    color: #fff;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.formula_list li::before
+{
+    content: "";
+    display: block;
+    background-image: url("./FormulaSectionImages/right_arrow.svg");
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    margin-right: 10px;
+    margin-top: 6px;
+}
+
+
+
+
+@media (max-width:992px) {
+    #formula_section .row
+    {
+        flex-direction: column-reverse;
+    }
+
+    .formula_image_conatiner
+    {
+        margin-right: 0px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width:767.8px) {
+    .formula_heading_section .title
+    {
+        font-size: 44px;
+    }
+    .formula_heading_section
+    {
+        text-align: center;
+    }
+}
