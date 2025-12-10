@@ -1,35 +1,24 @@
 import './App.css';
-import BrandArea from './Components/BrandAreaSection/BrandArea';
-import Features from './Components/Features/Features';
 import Footer from './Components/Footer/Footer';
-import Formula from './Components/FormulaSection/Formula';
 import Header from './Components/Header/Header';
-import HeroSection from './Components/HeroSection/HeroSection';
-import Ingredient from './Components/IngredientSection/Ingredient';
-import NewsSection from './Components/NewsSection/NewsSection';
-import PricingSection from './Components/PricingSection/PricingSection';
-import Products from './Components/ProductSection/Products';
-import ShopArea from './Components/ShopAreaSection/ShopArea';
-import TestimonialSection from './Components/TestimonialSection/TestimonialSection';
-import {VideoSection,StatsBar} from './Components/VideoSection/VideoSection';
+import Homepage from './pages/Homepage/Homepage';
+import { Route, Routes } from 'react-router-dom';
+import OurShopPage from './pages/OurShopPage/OurShopPage';
+import ShopDetailPage from './pages/ShopDetailPage/ShopDetailPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 function App() {
-
   return (
     <div className="app">
-      <Header />
-      <HeroSection />
-      <BrandArea/>
-      <Features/>
-      <Products/>
-      <ShopArea/>
-      <VideoSection/>
-      <StatsBar/>
-      <Ingredient></Ingredient>
-      <Formula></Formula>
-      <PricingSection></PricingSection>
-      <TestimonialSection></TestimonialSection>
-      <NewsSection></NewsSection>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Homepage></Homepage>}></Route>
+        <Route path='/ourshop' element={<OurShopPage></OurShopPage>}></Route>
+        <Route path='/shopDetails' element={<ShopDetailPage></ShopDetailPage>}></Route>
+        <Route path='/login' element={<LoginPage></LoginPage>}></Route>
+        <Route path='/signup' element={<SignUpPage></SignUpPage>}></Route>
+      </Routes>
       <Footer></Footer>
     </div>
   );

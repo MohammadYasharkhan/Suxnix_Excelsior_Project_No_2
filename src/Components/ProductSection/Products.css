@@ -231,7 +231,7 @@
 }
 
 
-.price
+.product_button .price
 {
     font-size: 28px;
     font-weight: 700;
@@ -240,7 +240,7 @@
     margin-left: 30px;
 }
 
-.old_price
+.product_button .old_price
 {
     font-size: 20px;
     color: var(--tg-primary-color);

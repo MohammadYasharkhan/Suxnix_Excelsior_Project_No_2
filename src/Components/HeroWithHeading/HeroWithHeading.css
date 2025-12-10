@@ -1,0 +1,124 @@
+.hero_with_heading_bg
+{
+    background-image: url(../VideoSection/Videosection_image/video_bg_8112a5ce-2dd0-45f9-ac62-fd4d1b132944.webp);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding: 230px 0 150px;
+    z-index: 1;
+}
+
+.hero_with_heading_bg::before
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: #090909;
+    opacity: .85;
+    z-index: -1;
+}
+
+.hero_with_heading_bg::after
+{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-image: url(../TestimonialSection/TestimonialSectionImages/testimonial_bottom_shape.png);
+    width: 100%;
+    height: 36px;
+    background-repeat: repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.hero_with_heading_content .title
+{
+    font-size: 60px;
+    line-height: 1.2;
+    color: var(--tg-white);
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+}
+
+.hero_with_heading_content .bottom
+{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 0;
+    list-style: none;
+    background-color: transparent;
+    border-radius: 0;
+    justify-content: center;
+}
+
+.hero_with_heading_content .bottom li
+{
+    display: block;
+    font-size: 20px;
+    color: var(--tg-white);
+    line-height: 1.4;
+}
+
+.hero_with_heading_content .bottom li:nth-child(2n)::before
+{
+    padding-right: 15px;
+    padding-left: 15px;
+    color: var(--tg-white);
+    content: "|";
+}
+
+.hero_with_heading_content .bottom li a
+{
+    color: var(--tg-white);
+}
+
+/* .hero_heading_shape 
+{
+    position: absolute;
+    z-index: 3;
+} */
+
+.hero_heading_shape_one 
+{
+    left: 0;
+    bottom: -12%;
+    position: absolute;
+    z-index: 3;
+}
+
+.hero_heading_shape_two 
+{
+    right: 0;
+    bottom: -7%;
+    position: absolute;
+    z-index: 3;
+}
+
+
+@media (min-width:576px) and (max-width:767px) {
+    .hero_with_heading_content .title
+    {
+        font-size: 54px !important;
+    }
+}
+
+@media (max-width:768px) {
+    .hero_heading_shape_one , .hero_heading_shape_two
+    {
+        max-width: 100px;
+    }
+    .hero_heading_shape_one
+    {
+        bottom: -4%;
+    }
+    .hero_with_heading_content .title
+    {
+        font-size: 48px;
+        margin-bottom: 10px;
+    }
+}

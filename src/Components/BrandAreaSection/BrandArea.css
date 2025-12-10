@@ -55,20 +55,35 @@
     height: 2px;
     background-color: var(--tg-primary-color);
 }
-
+/* 
 .slider_track
 {
     width: 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
-}
+} */
 
 .slider_track_img_container
 {
-    width: 180px;
-    height: 48px;
+    max-height: 48px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.slider_track_img_container img 
+{
+    display: block;
+}
+
+
+
+@media (min-width:992px) and (max-width:1200px) {
+    .brand_item_custome_col
+    {
+        flex: 0 0 20%;   
+        max-width: 20%;
+    }
 }

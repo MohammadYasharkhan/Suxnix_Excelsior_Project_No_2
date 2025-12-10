@@ -3,10 +3,10 @@ import { forwardRef } from "react";
 import "./ShopArea.css";
 
 const cardDetail = [
-  { productImage: "/assets/images/home_shop_thumb01.avif", title: "Antiaging and Longevity", price: "Tk 49.99", shapeColor: "grey" },
-  { productImage: "/assets/images/home_shop_thumb02.avif", title: "Box Full of Muscles", price: "Tk 85.99", shapeColor: "green" },
-  { productImage: "/assets/images/home_shop_thumb03.avif", title: "Protein Powder 2kg", price: "Tk 85.99", shapeColor: "purple" },
-  { productImage: "/assets/images/home_shop_thumb04.avif", title: "Whey Protein Powder", price: "Tk 49.99", shapeColor: "blue" }
+  { productImage: "/assets/images/home_shop_thumb01.avif", title: "Antiaging and Longevity", price: "Tk 49.99", shapeColor: "grey",cardType:"one" },
+  { productImage: "/assets/images/home_shop_thumb02.avif", title: "Box Full of Muscles", price: "Tk 85.99", shapeColor: "green",cardType:"one" },
+  { productImage: "/assets/images/home_shop_thumb03.avif", title: "Protein Powder 2kg", price: "Tk 85.99", shapeColor: "purple",cardType:"one" },
+  { productImage: "/assets/images/home_shop_thumb04.avif", title: "Whey Protein Powder", price: "Tk 49.99", shapeColor: "blue" ,cardType:"one"}
 ];
 
 function ShopArea() {
@@ -105,7 +105,9 @@ function ShopArea() {
           <div className="slick_list">
             <div className="slick_track" ref={trackRef}>
               {sliderProducts.map((card, i) => (
-                <ShopAreaCard {...card} key={i} ref={i == 0 ? slideRef : null} />
+                <div className="col-xxl-3 col-lg-4 col-md-6 col-12 product_list_custome" key={i} ref={i == 0 ? slideRef : null}>
+                    <ShopAreaCard {...card} />
+                </div>
               ))}
             </div>
           </div>
@@ -125,29 +127,33 @@ function ShopArea() {
 
 
 
-const ShopAreaCard = forwardRef(function ShopAreaCard({ productImage, shapeColor, title, price }, ref) {
+// const ShopAreaCard = forwardRef(function ShopAreaCard({ productImage, shapeColor, title, price }, ref) {
+function ShopAreaCard({ productImage, shapeColor, title, price, productType,cardType})
+{
   return (
-    <div className="col-xxl-3 col-lg-4 col-md-6 col-12 product_list_custome" ref={ref}>
-      <div className="shop_area_card" >
+    // <div className="col-xxl-3 col-lg-4 col-md-6 col-12 product_list_custome" ref={ref}>
+      <div className={`shop_area_card ${cardType==='two'?"inner_shop_item":""}`}>
         <div className="card_thumb">
           <a href="/" className="card_thumb_image">
             <img src={productImage} alt={title} />
           </a>
-          <div className={`bottom-half-circle ${shapeColor}`} />
+          {cardType==="one"&&(<div className={`bottom-half-circle ${shapeColor}`} />)}
         </div>
 
         <div className="card_bottom">
+          {cardType==="two"&&(<div className="product_nutrition_type"><a href="/">{productType}</a></div>)}
           <h4 className="title"><a href="/">{title}</a></h4>
           <span className="home-shop-price">{price}</span>
 
-          <div className="rating">
+          {cardType==="one"&&(<div className="rating">
             <img src="/assets/images/star.png" alt="star" />
             <img src="/assets/images/star.png" alt="star" />
             <img src="/assets/images/star.png" alt="star" />
             <img src="/assets/images/star.png" alt="star" />
             <img src="/assets/images/half-star.png" alt="half-star" />
             <span className="total_rating">(30)</span>
-          </div>
+          </div>)}
+          
 
           <div className="card_button_area">
             <div className="circled_add_to_cart">
@@ -157,8 +163,10 @@ const ShopAreaCard = forwardRef(function ShopAreaCard({ productImage, shapeColor
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
-});
+};
+
 
 export default ShopArea;
+export {ShopAreaCard};
