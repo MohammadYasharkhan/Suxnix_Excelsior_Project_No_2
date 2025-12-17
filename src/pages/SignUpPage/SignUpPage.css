@@ -1,0 +1,182 @@
+.registeration_card
+{
+    padding: 130px 0px;
+}
+
+.registeration_wraper
+{
+    background: var(--tg-gray-two);
+    border: 1px solid #E1E1E1;
+    border-radius: 8px;
+    padding: 30px 50px 40px;
+}
+
+
+.registeration_wraper .title
+{
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.registeration_wraper > p
+{
+    margin-bottom: 25px;
+}
+
+.account_form .form-grp
+{
+    margin-bottom: 20px;
+}
+
+.account_form .form-grp label
+{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #222222;
+    cursor: pointer;
+}
+
+.account_form .form-grp input
+{
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+    color: #222222;
+    border: 1px solid #E1E1E1;
+    background: #ffffff;
+    border-radius: 5px;
+    line-height: 1;
+}
+
+.account_form .form-grp input:focus
+{
+    border-color: #FAA432;
+    outline: none;
+}
+
+
+.account_form button
+{
+    width: 100%;
+    margin-top: 20px;
+    user-select: none;
+    -moz-user-select: none;
+    background: #0D9B4D none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 50px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.4;
+    margin-bottom: 0;
+    padding: 19px 50px;
+    text-align: center;
+    text-transform: capitalize;
+    touch-action: manipulation;
+    transition: all .3s 
+ease 0s;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.account_form .button::before
+{
+    content: "";
+    position: absolute;
+    -webkit-transition-duration: .8s;
+    transition-duration: .8s;
+    width: 200%;
+    height: 200%;
+    top: 110%;
+    left: 50%;
+    background: var(--tg-primary-color);
+    -webkit-transform: translateX(-50%);
+    transform: translate(-50%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.form_switch
+{
+    margin-top: 30px;
+}
+
+.form_switch p
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.form_switch p a
+{
+    text-decoration: underline;
+}
+
+
+.account_check
+{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.account_check_remember
+{
+    display: flex;
+    gap: 5px;
+}
+
+.account_check_remember input
+{
+    width: 20px;
+    height: 20px;
+    margin-inline-end: 3px;
+    margin-top: 2px;
+    border: 1px solid rgba(0, 0, 0, .25);
+}
+
+.account_check_remember label
+{
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+    color: #222222;
+    user-select: none;
+}
+
+.account_check_forget a
+{
+    color: var(--tg-primary-color);
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+@media (max-width:767.7px) {
+    .registeration_wraper
+    {
+        padding: 30px 20px;
+    }
+    .registeration_wraper .title
+    {
+        font-size: 26px;
+    }
+}
+
+
+@media (min-width:576px) and (max-width:767px) {
+    .registeration_wraper
+    {
+        padding: 30px;
+    }
+}

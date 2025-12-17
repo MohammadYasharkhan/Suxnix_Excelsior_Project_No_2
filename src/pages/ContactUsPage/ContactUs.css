@@ -1,0 +1,245 @@
+#contact_us_area
+{
+    padding: 120px 0 90px;
+}
+
+.contact_us_box_wrap
+{
+    padding: 0 55px;
+}
+
+.contact_us_box_wrap .contact_us_box
+{
+    box-shadow: 0 8px 16px #66666612;
+    padding: 60px;
+    background: var(--tg-white);
+    position: relative;
+    transition: all .2s ease-in-out;
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.contact_us_box_icon
+{
+    font-size: 100px;
+    color: var(--tg-secondary-color);
+    line-height: 1;
+    position: relative;
+    display: inline-flex;
+    margin: 0 0 25px;
+}
+
+.contact_us_box_icon .contact_box_overlay_icon{
+    position: absolute;
+    top: -5px;
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+    line-height: 26px;
+    background: var(--tg-white);
+    border-radius: 100%;
+    box-shadow: 0 8px 16px #6666661a;
+    color: var(--tg-primary-color);
+    right: -10px;
+}
+
+
+.contact_us_box_content .title
+{   
+    font-size: 30px;
+    margin: 0 0 15px;
+}
+
+
+
+#contact_us_form
+{
+    position: relative;
+    padding: 0 0 120px;
+}
+
+.contact_us_form_wrap
+{
+    padding: 0 0 0 30px;
+}
+
+
+.contact_us_form_title
+{
+    margin-bottom: 50px;
+}
+
+.contact_us_form_title .sub_title
+{
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: .095em;
+    text-transform: uppercase;
+    color: var(--tg-primary-color);
+    margin: 0 0 10px;
+}
+
+.contact_us_form_title .title
+{
+    font-size: 50px;
+    letter-spacing: -.025em;
+    margin-bottom: 0;
+}
+
+.contact_us_form_wrap .form_grp
+{
+    margin: 0 0 25px;
+    position: relative;
+}
+
+.contact_us_form_wrap .form_grp label
+{
+    display: block;
+    color: #222;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.contact_us_form_wrap .form_grp input, .contact_us_form_wrap textarea
+{
+    display: block;
+    width: 100%;
+    border: 1px solid #f1f1f1;
+    padding: 16px 25px;
+    border-radius: .25rem;
+}
+
+
+.contact_us_form_wrap .form_grp input:focus, .contact_us_form_wrap textarea:focus
+{
+    outline: none;
+}
+
+.contact_us_form_wrap select
+{
+    border: 1px solid #f1f1f1;
+    box-shadow: none;
+    outline: none;
+    min-height: 60px;
+    padding: 15px 25px;
+    margin: 0 0 25px;
+    color: var(--tg-body-font-color);
+    display: block;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.contact_us_form_wrap textarea
+{
+    min-height: 150px;
+}
+
+
+.contact_us_form_button button
+{
+    user-select: none;
+    background: var(--tg-secondary-color) none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 50px;
+    color: var(--tg-white);
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.4;
+    margin-bottom: 0;
+    padding: 19px 50px;
+    text-align: center;
+    text-transform: capitalize;
+    touch-action: manipulation;
+    transition: all .3s ease 0s;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+
+
+#contact_us_map
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#contact_us_map iframe
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width:1500px) {
+    .contact_us_box_wrap
+    {
+        padding: 0;
+    }
+
+    .contact_us_form_wrap 
+    {
+        padding: 0 0 0 20px;
+    }
+}
+
+@media (max-width:1200px) {
+    .contact_us_box_content .title
+    {
+        font-size: 25px;
+    }
+    .contact_us_box_icon
+    {
+        font-size: 70px;
+    }
+
+    .contact_us_box_wrap .contact_us_box
+    {
+        padding: 40px 30px;
+    }
+
+    .contact_us_form_wrap 
+    {
+        padding: 0;
+    }
+
+    #contact_us_map
+    {
+        display: block;
+        height: 400px;
+        margin: 0 0 70px;
+    }
+}
+
+
+@media (max-width:767.97px) {
+    .contact_us_form_title .title
+    {
+        font-size: 44px;
+    }
+}
+
+@media (min-width:576px) and (max-width:767px) {
+    .contact_us_box_content .title
+    {
+        font-size: 28px;
+    }
+
+    .contact_us_box_icon
+    {
+        font-size: 80px;
+    }
+
+    .contact_us_box_wrap .contact_us_box
+    {
+        padding: 60px;
+    }
+}

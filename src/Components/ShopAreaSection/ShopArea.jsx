@@ -1,15 +1,20 @@
-import { useEffect, useRef, useState } from "react";
-import { forwardRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import { ProductSepratorContext } from "../../context/StoreContext";
 import "./ShopArea.css";
 
-const cardDetail = [
-  { productImage: "/assets/images/home_shop_thumb01.avif", title: "Antiaging and Longevity", price: "Tk 49.99", shapeColor: "grey",cardType:"one" },
-  { productImage: "/assets/images/home_shop_thumb02.avif", title: "Box Full of Muscles", price: "Tk 85.99", shapeColor: "green",cardType:"one" },
-  { productImage: "/assets/images/home_shop_thumb03.avif", title: "Protein Powder 2kg", price: "Tk 85.99", shapeColor: "purple",cardType:"one" },
-  { productImage: "/assets/images/home_shop_thumb04.avif", title: "Whey Protein Powder", price: "Tk 49.99", shapeColor: "blue" ,cardType:"one"}
-];
+
+// const cardDetail = [
+//   { productImage: "/assets/images/home_shop_thumb01.avif", title: "Antiaging and Longevity", price: "Tk 49.99", shapeColor: "grey",cardType:"one" },
+//   { productImage: "/assets/images/home_shop_thumb02.avif", title: "Box Full of Muscles", price: "Tk 85.99", shapeColor: "green",cardType:"one" },
+//   { productImage: "/assets/images/home_shop_thumb03.avif", title: "Protein Powder 2kg", price: "Tk 85.99", shapeColor: "purple",cardType:"one" },
+//   { productImage: "/assets/images/home_shop_thumb04.avif", title: "Whey Protein Powder", price: "Tk 49.99", shapeColor: "blue" ,cardType:"one"}
+// ];
 
 function ShopArea() {
+
+  const {getProductItems}=useContext(ProductSepratorContext);
+  var cardDetail=getProductItems(1,4); 
+
   const trackRef = useRef(null);
   const [index, setIndex] = useState(0);
 
@@ -128,8 +133,9 @@ function ShopArea() {
 
 
 // const ShopAreaCard = forwardRef(function ShopAreaCard({ productImage, shapeColor, title, price }, ref) {
-function ShopAreaCard({ productImage, shapeColor, title, price, productType,cardType})
+function ShopAreaCard({id,productImage, shapeColor, title, price, productType,cardType})
 {
+  const {addToCart}=useContext(ProductSepratorContext);
   return (
     // <div className="col-xxl-3 col-lg-4 col-md-6 col-12 product_list_custome" ref={ref}>
       <div className={`shop_area_card ${cardType==='two'?"inner_shop_item":""}`}>
@@ -156,7 +162,7 @@ function ShopAreaCard({ productImage, shapeColor, title, price, productType,card
           
 
           <div className="card_button_area">
-            <div className="circled_add_to_cart">
+            <div className="circled_add_to_cart" onClick={()=>addToCart(id)}>
               <img src="/assets/images/shopping-cart (1).png" alt="cart" />
             </div>
             <button className="buy_now_button">Buy Now</button>

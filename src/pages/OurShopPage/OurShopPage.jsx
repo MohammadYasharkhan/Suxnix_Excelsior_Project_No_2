@@ -1,23 +1,28 @@
-import { useState, useEffect, useRef} from 'react';
+import { useState, useEffect, useRef, useContext} from 'react';
 import HeroWithHeading from '../../Components/HeroWithHeading/HeroWithHeading';
 import { ShopAreaCard } from '../../Components/ShopAreaSection/ShopArea';
 import './OurShopPage.css';
 import noUiSlider from "nouislider";
 import "nouislider/dist/nouislider.css";
+import { ProductSepratorContext } from '../../context/StoreContext';
 
 
-const shopItemsData = [
-    { productImage: "/assets/images/home_shop_thumb02.avif", title: "Amino Energy Health 2kg", price: "Tk 59.99", productType: "Fat Burners", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb01.avif", title: "Antiaging and Longevity", price: "Tk 49.99", productType: "Nutrition", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb03.avif", title: "Box Full Of Muscels", price: "Tk 85.99", productType: "Burners", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb04.avif", title: "Protein Powder 2kg", price: "Tk 85.99", productType: "Medicine", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb05.avif", title: "Seriour Mass 2kg", price: "Tk 49.99", productType: "Fat Burners", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.avif", title: "Seriour Mass 2kg", price: "Tk 49.99", productType: "Nurtition", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb03.avif", title: "Suxnix Natural Vitamin Supplement", price: "Tk 29.99", productType: "Protein", cardType: "two" },
-    { productImage: "/assets/images/home_shop_thumb02.avif", title: "Whey Protein Powder", price: "Tk 49.99", productType: "Nutrition", cardType: "two" }
-];
+// const shopItemsData = [
+//     { productImage: "/assets/images/home_shop_thumb02.avif", title: "Amino Energy Health 2kg", price: "Tk 59.99", productType: "Fat Burners", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb01.avif", title: "Antiaging and Longevity", price: "Tk 49.99", productType: "Nutrition", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb03.avif", title: "Box Full Of Muscels", price: "Tk 85.99", productType: "Burners", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb04.avif", title: "Protein Powder 2kg", price: "Tk 85.99", productType: "Medicine", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb05.avif", title: "Seriour Mass 2kg", price: "Tk 49.99", productType: "Fat Burners", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb06_6a015f7a-5653-479c-9439-825779ead9e7.avif", title: "Seriour Mass 2kg", price: "Tk 49.99", productType: "Nurtition", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb03.avif", title: "Suxnix Natural Vitamin Supplement", price: "Tk 29.99", productType: "Protein", cardType: "two" },
+//     { productImage: "/assets/images/home_shop_thumb02.avif", title: "Whey Protein Powder", price: "Tk 49.99", productType: "Nutrition", cardType: "two" }
+// ];
 
 function OurShopPage() {
+
+    const {getProductItems}=useContext(ProductSepratorContext);
+    var shopItemsData=getProductItems(5,12);
+
     const noUIsliderRef = useRef(null);
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(500);

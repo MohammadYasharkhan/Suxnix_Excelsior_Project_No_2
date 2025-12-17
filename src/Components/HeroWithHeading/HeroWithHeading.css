@@ -100,6 +100,14 @@
 }
 
 
+@media (max-width:1200px) {
+    .hero_with_heading_bg
+    {
+        padding: 150px 0 120px;
+    }
+}
+
+
 @media (min-width:576px) and (max-width:767px) {
     .hero_with_heading_content .title
     {
