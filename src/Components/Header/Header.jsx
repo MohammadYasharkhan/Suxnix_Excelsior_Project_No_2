@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
+import { useNavigate, useLocation ,Link} from "react-router-dom";
 import "./Header.css";
 import { ProductSepratorContext } from "../../context/StoreContext";
 import { productData } from "../../assets";
@@ -21,33 +22,33 @@ const subListData = {
     secondList: [
         {
             liName: "Our Shop",
-            liLink: "/",
+            liLink: "/ourshop",
         },
         {
             liName: "Shop Detail",
-            liLink: "/",
+            liLink: "/shopDetails",
         },
         {
             liName: "Cart Page",
-            liLink: "/",
+            liLink: "/cart",
         },
         {
             liName: "Login Page",
-            liLink: "/",
+            liLink: "/login",
         },
         {
             liName: "Register",
-            liLink: "/",
+            liLink: "/signup",
         },
     ],
     thirdList: [
         {
             liName: "Our Blog",
-            liLink: "/",
+            liLink: "/blogPost",
         },
         {
             liName: "Blog Details",
-            liLink: "/",
+            liLink: "/blogDetails",
         },
     ]
 };
@@ -55,7 +56,7 @@ const subListData = {
 
 function Header() {
 
-    const { totalUniqueItems, count } = useContext(ProductSepratorContext);
+    const { totalUniqueItems, count, subTotal } = useContext(ProductSepratorContext);
 
     const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -158,179 +159,194 @@ function Header() {
     }
 
 
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    const renderHeaderSubElements=()=>{
+    const scrollTo = (id) => {
+        if (location.pathname === "/") {
+            // already on home → just scroll
+            document.getElementById(id)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
+        } else {
+            // go to home and pass section id
+            navigate("/", { state: { scrollTo: id } });
+        }
+    };
+
+    const renderHeaderSubElements = () => {
         return <div className="container custome_container">
-                    <div className="row">
-                        <div className="col-12">
+            <div className="row">
+                <div className="col-12">
 
-                            {sideBarOfMobile && (
-                                <div className="mobile_menu_wrapper">
-                                    <div className={`mobile_menu ${isClosing ? "closing_animation_sideBar" : "opening_animation_sideBar"}`} ref={sideBarMobileRef} >
-                                        <nav className="menu_box">
-                                            <div className="menu_box_close_button" onClick={closeMobileSideBar}>
-                                                ×
-                                            </div>
-                                            <div className="menu_box_nav_logo">
-                                                <a href="/">
-                                                    <img src="assets/images/logo.webp" alt="logo_image" />
-                                                </a>
-                                            </div>
-
-                                            <ul className="menu_box_navigation">
-                                                <li className="menu_item_has_children"><a href="/">Home</a>
-                                                    <SubListOfMobileView listdata={subListData.firstList}></SubListOfMobileView>
-                                                </li>
-                                                <li><a href="#">Features</a></li>
-                                                <li><a href="/">Product</a></li>
-                                                <li><a href="/">Ingredient</a></li>
-                                                <li><a href="/">Pricing</a></li>
-                                                <li className="menu_item_has_children"><a href="/">Shop</a>
-                                                    <SubListOfMobileView listdata={subListData.secondList}></SubListOfMobileView>
-                                                </li>
-                                                <li className="menu_item_has_children"><a href="/">News</a>
-                                                    <SubListOfMobileView listdata={subListData.thirdList}></SubListOfMobileView>
-                                                </li>
-                                                <li><a href="/">Contacts</a></li>
-                                            </ul>
-
-
-                                            <div className="mobile_social_links">
-                                                <ul className="mobile_social_links_ul">
-                                                    <li><a href="#"><img src="/assets/images/facebook_black.png" alt="facebook icon" /></a></li>
-                                                    <li><a href="#"><img src="/assets/images/twitter_black.png" alt="twitter icon" /></a></li>
-                                                    <li><a href="#"><img src="/assets/images/instagram_black.png" alt="instagram icon" /></a></li>
-                                                    <li><a href="#"><img src="/assets/images/youtube_black.png" alt="youtube icon" /></a></li>
-                                                    <li><a href="#"><img src="/assets/images/vimeo_black.png" alt="vimeo icon" /></a></li>
-                                                </ul>
-                                            </div>
-                                        </nav>
+                    {sideBarOfMobile && (
+                        <div className="mobile_menu_wrapper">
+                            <div className={`mobile_menu ${isClosing ? "closing_animation_sideBar" : "opening_animation_sideBar"}`} ref={sideBarMobileRef} onMouseDown={(e) => e.stopPropagation()}>
+                                <nav className="menu_box">
+                                    <div className="menu_box_close_button" onClick={closeMobileSideBar}>
+                                        ×
                                     </div>
-                                </div>
-                            )
-                            }
+                                    <div className="menu_box_nav_logo">
+                                        <a href="/">
+                                            <img src="assets/images/logo.webp" alt="logo_image" />
+                                        </a>
+                                    </div>
 
-
-
-
-                            <div className="menu_wrapper">
-                                <div className="logo_container">
-                                    <img src="assets/images/logo.webp" alt="logo-img" />
-                                </div>
-                                <nav className="navbar_wrapper">
-                                    <ul>
-                                        <li
-                                            className="has-dropdown"
-                                            onMouseEnter={() => setActiveDropdown("Home")}
-                                            onMouseLeave={() => setActiveDropdown(null)}
-                                        >
-                                            Home
-                                            <ul
-                                                className={`dropdown ${activeDropdown === "Home" ? "open" : ""
-                                                    }`}
-                                            >
-                                                <li><a href="/">Home One</a></li>
-                                                <li><a href="/">Home Two</a></li>
-                                                <li><a href="/">Home Three</a></li>
-                                            </ul>
+                                    <ul className="menu_box_navigation">
+                                        <li className="menu_item_has_children"><a href="#" onClick={(e) => { e.preventDefault() }}>Home</a>
+                                            <SubListOfMobileView listdata={subListData.firstList}></SubListOfMobileView>
                                         </li>
-                                        <li>Features</li>
-                                        <li>Product</li>
-                                        <li>Ingredient</li>
-                                        <li>Pricing</li>
-                                        <li
-                                            className="has-dropdown"
-                                            onMouseEnter={() => setActiveDropdown("Shop")}
-                                            onMouseLeave={() => setActiveDropdown(null)}
-                                        >
-                                            Shop
-                                            <ul
-                                                className={`dropdown ${activeDropdown === "Shop" ? "open" : ""}`}
-                                            >
-                                                <li><a href="/ourshop">Our Shop</a></li>
-                                                <li><a href="/">Shop Detail</a></li>
-                                                <li><a href="/">Cart Page</a></li>
-                                                <li><a href="/">Login Page</a></li>
-                                                <li><a href="/">Register</a></li>
-                                            </ul>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); scrollTo("feature_section") }}>Features</a></li>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); scrollTo("products_section") }}>Product</a></li>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); scrollTo("ingredient_section") }}>Ingredient</a></li>
+                                        <li><a href="#" onClick={(e) => { e.preventDefault(); scrollTo("pricing_section") }}>Pricing</a></li>
+                                        <li className="menu_item_has_children"><a href="#" onClick={(e) => { e.preventDefault() }}>Shop</a>
+                                            <SubListOfMobileView listdata={subListData.secondList}></SubListOfMobileView>
                                         </li>
-                                        <li
-                                            className="has-dropdown"
-                                            onMouseEnter={() => setActiveDropdown("News")}
-                                            onMouseLeave={() => setActiveDropdown(null)}
-                                        >
-                                            News
-                                            <ul
-                                                className={`dropdown ${activeDropdown === "News" ? "open" : ""
-                                                    }`}
-                                            >
-                                                <li><a href="/">Our Blog</a></li>
-                                                <li><a href="/">Blog Details</a></li>
-                                            </ul>
+                                        <li className="menu_item_has_children"><a href="#" onClick={(e) => { e.preventDefault() }}>News</a>
+                                            <SubListOfMobileView listdata={subListData.thirdList}></SubListOfMobileView>
                                         </li>
-                                        <li>Contacts</li>
+                                        <li><Link to="/contactUs">Contacts</Link></li>
                                     </ul>
+
+
+                                    <div className="mobile_social_links">
+                                        <ul className="mobile_social_links_ul">
+                                            <li><a href="#"><img src="/assets/images/facebook_black.png" alt="facebook icon" /></a></li>
+                                            <li><a href="#"><img src="/assets/images/twitter_black.png" alt="twitter icon" /></a></li>
+                                            <li><a href="#"><img src="/assets/images/instagram_black.png" alt="instagram icon" /></a></li>
+                                            <li><a href="#"><img src="/assets/images/youtube_black.png" alt="youtube icon" /></a></li>
+                                            <li><a href="#"><img src="/assets/images/vimeo_black.png" alt="vimeo icon" /></a></li>
+                                        </ul>
+                                    </div>
                                 </nav>
-                                <div className="header_buttons">
-                                    <div className="cart_container">
-                                        <a href="#" onClick={(e) => { e.preventDefault() }}>
-                                            <img src="assets/images/shopping-cart.png" alt="cart-image" />
-                                        </a>
-                                        <span className="cart_count">{totalUniqueItems}</span>
-                                        <div className="header_cart_navigator">
-                                                <ul>
-                                                    {Object.keys(count).length === 0 ? (
-                                                        <li>Your cart is empty</li>
-                                                    ) : (
-                                                        Object.keys(count).map((id) => {
-                                                            const product = productData.find(
-                                                                (item) => item.id === Number(id)
-                                                            );
+                            </div>
+                        </div>
+                    )
+                    }
 
-                                                            if (!product) return null;
 
-                                                            return (
-                                                                <NavLinkSmallCard
-                                                                    key={id}
-                                                                    selectedData={product}
-                                                                    quantity={count[id]}
-                                                                />
-                                                            );
-                                                        })
-                                                    )}
-                                                </ul>
-                                                <div className="nav_sub_total_div">
-                                                    <strong>Subtotal</strong>
-                                                    <span>0.00</span>
-                                                </div>
-                                            <div className="nav_check_out_link">
-                                                <p>
-                                                    <a href="#">View Cart</a>
-                                                    <a href="#" className="check_out_anchor">CheckOut</a>
-                                                </p>
-                                            </div>
-                                        </div>
+
+
+                    <div className="menu_wrapper">
+                        <div className="logo_container">
+                            <img src="assets/images/logo.webp" alt="logo-img" />
+                        </div>
+                        <nav className="navbar_wrapper">
+                            <ul>
+                                <li
+                                    className="has-dropdown"
+                                    onMouseEnter={() => setActiveDropdown("Home")}
+                                    onMouseLeave={() => setActiveDropdown(null)}
+                                >
+                                    Home
+                                    <ul
+                                        className={`dropdown ${activeDropdown === "Home" ? "open" : ""
+                                            }`}
+                                    >
+                                        <li><Link to="/">Home One</Link></li>
+                                        <li><Link to="/">Home Two</Link></li>
+                                        <li><Link to="/">Home Three</Link></li>
+                                    </ul>
+                                </li>
+                                <li onClick={() => scrollTo("feature_section")}>Features</li>
+                                <li onClick={() => scrollTo("products_section")}>Product</li>
+                                <li onClick={() => scrollTo("ingredient_section")}>Ingredient</li>
+                                <li onClick={() => scrollTo("pricing_section")}>Pricing</li>
+                                <li
+                                    className="has-dropdown"
+                                    onMouseEnter={() => setActiveDropdown("Shop")}
+                                    onMouseLeave={() => setActiveDropdown(null)}
+                                >
+                                    Shop
+                                    <ul
+                                        className={`dropdown ${activeDropdown === "Shop" ? "open" : ""}`}
+                                    >
+                                        <li><Link to="/ourshop">Our Shop</Link></li>
+                                        <li><Link to="/shopDetails">Shop Detail</Link></li>
+                                        <li><Link to="/cart">Cart Page</Link></li>
+                                        <li><Link to="/login">Login Page</Link></li>
+                                        <li><Link to="/signup">Register</Link></li>
+                                    </ul>
+                                </li>
+                                <li
+                                    className="has-dropdown"
+                                    onMouseEnter={() => setActiveDropdown("News")}
+                                    onMouseLeave={() => setActiveDropdown(null)}
+                                >
+                                    News
+                                    <ul
+                                        className={`dropdown ${activeDropdown === "News" ? "open" : ""
+                                            }`}
+                                    >
+                                        <li><Link to="/blogPost">Our Blog</Link></li>
+                                        <li><Link to="/blogDetails">Blog Details</Link></li>
+                                    </ul>
+                                </li>
+                                <li><Link to='/contactUs'>Contacts</Link></li>
+                            </ul>
+                        </nav>
+                        <div className="header_buttons">
+                            <div className="cart_container">
+                                <a href="#" onClick={(e) => { e.preventDefault() }}>
+                                    <img src="assets/images/shopping-cart.png" alt="cart-image" />
+                                </a>
+                                <span className="cart_count">{totalUniqueItems}</span>
+                                <div className="header_cart_navigator">
+                                    <ul>
+                                        {Object.keys(count).length === 0 ? (
+                                            <li>Your cart is empty</li>
+                                        ) : (
+                                            Object.keys(count).map((id) => {
+                                                const product = productData.find(
+                                                    (item) => item.id === Number(id)
+                                                );
+
+                                                if (!product) return null;
+
+                                                return (
+                                                    <NavLinkSmallCard
+                                                        key={id}
+                                                        selectedData={product}
+                                                        quantity={count[id]}
+                                                    />
+                                                );
+                                            })
+                                        )}
+                                    </ul>
+                                    <div className="nav_sub_total_div">
+                                        <strong>Subtotal</strong>
+                                        {Object.keys(count).length === 0 ? <span>0.00</span> : <span>{subTotal}</span>}
                                     </div>
-
-                                    <div className="search_icon">
-                                        <a onClick={() => setSearchBarActive(true)}>
-                                            {/* <i className="fi-rr-search"></i> */}
-                                            <img
-                                                className="search_image_div"
-                                                src="assets/images/search.png"
-                                                alt="search image"
-                                            />
-                                        </a>
-                                    </div>
-
-                                    <div className="side_bar_opening_button" onClick={() => window.innerWidth <= 1200 ? setSideBarOfMobile(true) : setSideBarActive(true)}>
-                                        <img src="assets/images/menu.png" alt="menu image" />
+                                    <div className="nav_check_out_link">
+                                        <p>
+                                            <Link to='/cart'>View Cart</Link>
+                                            <a href="#" className="check_out_anchor">CheckOut</a>
+                                        </p>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className="search_icon">
+                                <a onClick={() => setSearchBarActive(true)}>
+                                    {/* <i className="fi-rr-search"></i> */}
+                                    <img
+                                        className="search_image_div"
+                                        src="assets/images/search.png"
+                                        alt="search image"
+                                    />
+                                </a>
+                            </div>
+
+                            <div className="side_bar_opening_button" onClick={() => window.innerWidth <= 1200 ? setSideBarOfMobile(true) : setSideBarActive(true)}>
+                                <img src="assets/images/menu.png" alt="menu image" />
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     }
 
     return (
@@ -452,7 +468,7 @@ function SubListOfMobileView({ listdata }) {
             listStyleType: 'none'
         }}>
             {listdata.map((item, index) => (
-                <li><a href={item.liLink}>{item.liName}</a> </li>
+                <li><Link to={item.liLink}>{item.liName}</Link></li>
             ))}
         </ul>
     </>

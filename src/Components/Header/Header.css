@@ -393,6 +393,11 @@
     display: block;
 } 
 
+.navbar_wrapper > ul > li > a
+{
+    color: inherit;
+}
+
 .dropdown li a
 {
     padding: 9px 15px 9px 25px;

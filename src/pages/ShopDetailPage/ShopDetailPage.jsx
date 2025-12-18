@@ -13,7 +13,7 @@ import "./ShopDetailPage.css";
 
 function ShopDetailPage() {
 
-    const { getProductItems, increment, decrement, updateCountForOneIdQty } = useContext(ProductSepratorContext);
+    const { getProductItems, updateCountForOneIdQty } = useContext(ProductSepratorContext);
     var cardDetail = getProductItems(13, 15);
 
 

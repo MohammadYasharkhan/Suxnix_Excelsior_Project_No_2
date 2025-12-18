@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect} from "react";
 import { productData } from "../assets";
 
 export const ProductSepratorContext = createContext();
@@ -17,22 +17,7 @@ function ProductSepratorContextProvider({ children }) {
     const totalUniqueItems = Object.keys(count).length;
 
 
-    const increment = (id) => {
-        setCount((prev) => ({
-            ...prev,
-            [id]: (prev[id] || 0) + 1
-        }));
-        console.log(count);
-    };
 
-
-    const decrement = (id) => {
-        setCount((prev) => ({
-            ...prev,
-            [id]: prev[id] > 0 ? prev[id] - 1 : 0
-        }));
-        console.log(count);
-    };
 
     const removeItem = (id) => {
         setCount((prev) => {
@@ -43,15 +28,34 @@ function ProductSepratorContextProvider({ children }) {
     };
 
 
-    const updateCountForOneIdQty=(qtyof1)=>{
+    const updateCountForOneIdQty = (qtyof1) => {
 
         console.log(qtyof1);
-        setCount((prev)=>({
-                ...prev,
-                1: (prev[1] || 0) + qtyof1
+        setCount((prev) => ({
+            ...prev,
+            1: (prev[1] || 0) + qtyof1
         }));
 
         console.log(count);
+    };
+
+
+    const updateRealCount = (qtyObj) => {
+        setCount((prev) => {
+            const updated = { ...prev };
+
+            Object.keys(qtyObj).forEach((id) => {
+                if (qtyObj[id] === 0) {
+                    // remove item
+                    delete updated[id];
+                } else {
+                    // update quantity
+                    updated[id] = qtyObj[id];
+                }
+            });
+
+            return updated;
+        });
     };
 
     const addToCart = (id) => {
@@ -62,7 +66,7 @@ function ProductSepratorContextProvider({ children }) {
         );
     };
 
-    const [totalItems,setTotalItems]=useState(0);
+    const [totalItems, setTotalItems] = useState(0);
     useEffect(() => {
         setTotalItems(Object.values(count).reduce(
             (sum, qty) => sum + qty,
@@ -70,7 +74,33 @@ function ProductSepratorContextProvider({ children }) {
         ))
     }, [count]);
 
-    return <ProductSepratorContext.Provider value={{ getProductItems, increment, decrement, removeItem, addToCart, count ,totalItems,totalUniqueItems,updateCountForOneIdQty}}>
+
+
+    const [subTotal, setSubTotal] = useState(0);
+
+    const discountHandler=(discountName)=>{
+        if(discountName==="DISCOUNT10")
+        {
+            setSubTotal((prev) => prev * 0.9);
+        }
+    };
+
+    useEffect(() => {
+        let total = 0;
+        for (const id in count) {
+            const product = productData.find(
+                item => item.id === Number(id)
+            );
+
+            if (product) {
+                const price = Number(product.price.replace("Tk", "").trim());
+                total += price * count[id];
+            }
+        }
+        setSubTotal(total);
+    }, [count]);
+
+    return <ProductSepratorContext.Provider value={{ getProductItems, removeItem, addToCart, count, totalItems, totalUniqueItems, updateCountForOneIdQty, subTotal,updateRealCount,discountHandler }}>
         {children}
     </ProductSepratorContext.Provider>;
 }
